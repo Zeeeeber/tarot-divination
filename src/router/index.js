@@ -1,26 +1,46 @@
+/* eslint-disable */
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import LoginPage from "../views/Login.vue";
+import RegisterPage from "../views/Register.vue";
+import HomePage from "../views/Home.vue";
+import DivinationPage from "../views/Divination.vue";
+import AboutPage from "../views/About.vue";  // 添加这行
 
 const routes = [
   {
     path: "/",
+    redirect: "/login"
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: LoginPage
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: RegisterPage
+  },
+  {
+    path: "/home",
     name: "home",
-    component: HomeView,
+    component: HomePage
+  },
+  {
+    path: "/divination/:type",
+    name: "divination",
+    component: DivinationPage
   },
   {
     path: "/about",
     name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  },
+    component: AboutPage
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes
 });
 
 export default router;
